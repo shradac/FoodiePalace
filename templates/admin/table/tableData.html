@@ -1,0 +1,128 @@
+{% extends "layoutNavAdmin.html" %}
+{% block content %}
+
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+    <div class="container text-center my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Table {{currentTableNumber}}</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center text-uppercase">
+                <li class="breadcrumb-item"><a href="#">Admin Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Table {{currentTableNumber}}
+                </li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+
+
+<div class="row g-4" style="margin: 2%">
+    {% for data in customer%}
+    <div class="col-lg-3 col-sm-6 col-md-6 wow fadeInUp tooltipCustomer" data-wow-delay="0.3s">
+        <div class="service-item rounded pt-3" style="padding-bottom: 15%">
+            <div class="p-4" style="text-align: center">
+                <h6 class="mb-0">Customer ID: {{ data['customerId']}} </h6>
+                <h6 class="mb-0" style="padding-top: 8%">Name: {{ data['firstName'] ~" " ~
+                    data['lastName'] }}</h6>
+            </div>
+            <span class="tooltipCustomerText">Name: {{ data['firstName'] ~" " ~data['lastName'] }}
+                <br>Mobile:  {{data['mobile']}}<br>Email:  {{data['email']}}
+                <br>Address:  {{data['aptNumber']~" "~data['streetAddress']}}<br>Mobile:  {{data['mobile']}}
+                <br>City:  {{data['city']}}<br>State:  {{data['state']}}<br>Zipcode:  {{data['zipcode']}}</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="tab-content">
+    <div id="tab-1" class="tab-pane fade show p-0 active">
+        <div class="row g-4">
+            {% for dish in menuItems %}
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="d-flex align-items-center" style="margin: 3%">
+                    <img class="flex-shrink-0 img-fluid rounded"
+                         src="../static/img/menu-1.jpg" alt="" style="width: 80px;">
+                    <div class="w-100 d-flex flex-column text-start ps-4">
+                        <h5 class="d-flex justify-content-between border-bottom pb-2">
+                            <span>{{dish['dishName']}}</span>
+                            <div class=”dishCounter”>
+                                {% set plusClick="onPlusClick(" ~ dish['dishId']~")" %}
+                                <button class=”dishButton” onClick={{plusClick}}>+</button>
+                                {% set tag="counterNumber" ~ dish['dishId'] %}
+                                <div class=”dishCount” id="{{tag}}">{{dish['quantity']}}</div>
+                                {% set minusClick="onMinusClick(" ~ dish['dishId']~")" %}
+                                <button class=”dishButton” onClick={{minusClick}}>-</button>
+                            </div>
+                            <span class="text-primary">{{"$"~dish['price']}}</span>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <form action="/admin/table" method="post">
+            <button class="btn btn-primary py-2 px-4" type="submit" value="Submit"
+                    onClick="onClickSubmit()">Submit
+            </button>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    function onClickSubmit() {
+        let dishList = {{ menuItems | tojson }};
+        var orderList = {};
+        console.log(dishList)
+
+        for (let i = 0; i < dishList.length; i++) {
+            let number = parseInt(
+                document.getElementById("counterNumber" + dishList[i]['dishId']).innerHTML);
+            orderList[dishList[i]['dishId']] = number;
+        }
+        console.log(orderList);
+
+        $.ajax({
+                   url:"/admin/tableData?tableNumber={{currentTableNumber}}&orderList",
+                   type:"POST",
+                   dataType:'json',
+                   contentType: "application/json",
+                   data: JSON.stringify(orderList)
+
+               });
+
+
+    }
+
+    function onPlusClick(dishId) {
+        let plusClicks = parseInt(
+            document.getElementById("counterNumber" + dishId).innerHTML);
+        plusClicks += 1;
+        document.getElementById("counterNumber" + dishId).innerHTML = plusClicks;
+    };
+
+    function onMinusClick(dishId) {
+        let minusClicks = parseInt(
+            document.getElementById("counterNumber" + dishId).innerHTML);
+        minusClicks -= 1;
+        if (minusClicks >= 0) {
+            document.getElementById("counterNumber" + dishId).innerHTML = minusClicks;
+        }
+    };
+
+
+</script>
+
+
+
+
+
+
+
+{% endblock %}

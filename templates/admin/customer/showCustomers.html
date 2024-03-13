@@ -1,0 +1,38 @@
+{% extends "layoutNavAdmin.html" %}
+{% block content %}
+
+
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+    <div class="container text-center my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Show Customers</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center text-uppercase">
+                <li class="breadcrumb-item"><a href="#">Admin Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Show Customers
+                </li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row g-4" style="margin: 2%">
+    {% for customer in customerList%}
+    <div class="col-lg-3 col-sm-6 col-md-6 wow fadeInUp tooltipCustomer" data-wow-delay="0.3s">
+        <div class="service-item rounded pt-3" style="padding-bottom: 15%">
+            <div class="p-4" style="text-align: center">
+                <h6 class="mb-0">Customer ID: {{ customer['customerId']}} </h6>
+                <h6 class="mb-0" style="padding-top: 8%">Name: {{ customer['firstName'] ~" " ~
+                    customer['lastName'] }}</h6>
+            </div>
+            <span class="tooltipCustomerText">Name: {{ customer['firstName'] ~" " ~customer['lastName'] }}
+                <br>Mobile:  {{customer['mobile']}}<br>Email:  {{customer['email']}}
+                <br>Address:  {{customer['aptNumber']~" "~customer['streetAddress']}}<br>Mobile:  {{customer['mobile']}}
+                <br>City:  {{customer['city']}}<br>State:  {{customer['state']}}<br>Zipcode:  {{customer['zipcode']}}</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

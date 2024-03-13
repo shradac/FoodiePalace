@@ -1,0 +1,55 @@
+{% extends "layoutNavAdmin.html" %}
+{% block content %}
+
+
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+    <div class="container text-center my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Tables</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center text-uppercase">
+                <li class="breadcrumb-item"><a href="#">Admin Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Tables
+                </li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+
+
+<div class="row g-4" style="margin: 2%">
+    {% for table in tableList %}
+    {% set tag="/admin/tableData?tableNumber="~table['tableNumber']%}
+    <a href={{tag}} class="col-lg-3 col-sm-6 col-md-6" data-wow-delay="0.3s">
+        <div class=" tableBox rounded pt-3 {{'tableColorFree' if table['tableStatus'] == 'Free'  }}
+        {{'tableColorReserved' if table['tableStatus'] == 'Reserved'  }}
+        {{'tableColorOngoing' if table['tableStatus'] == 'Ongoing'  }}"
+             style="padding-bottom: 10%; ">
+            <div class="p-4" style="text-align: center">
+                <h5 class="mb-0">Table Number: {{ table['tableNumber']}} </h5>
+                <h5 class="mb-0">Status: {{ table['tableStatus']}} </h5>
+                <h5 class="mb-0">Capacity: {{ table['tableCapacity']}} </h5>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+
+<form action="" method="post">
+    <div class="row g-3 " style="margin-right: 10%; margin-bottom: 10%; margin-left: 10%">
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" name="clearTable" id="clearTable"
+                       placeholder="Clear Table" required>
+                <label for="clearTable">Clear Table</label>
+            </div>
+        </div>
+
+        <input class="btn btn-primary py-2 px-4" type="submit" value="Submit">
+    </div>
+</form>
+
+
+{% endblock %}

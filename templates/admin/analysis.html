@@ -1,0 +1,51 @@
+{% extends "layoutNavAdmin.html" %}
+{% block content %}
+
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+    <div class="container text-center my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Analysis</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center text-uppercase">
+                <li class="breadcrumb-item"><a href="#">Admin Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Analysis</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+
+<div class="container-xxl py-5">
+    <div class="container" style="padding-top: 5%;text-align: center">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h1 class="section-title ff-secondary text-center text-primary fw-normal mb-5">Most
+                Ordered Dishes</h1>
+        </div>
+        <img src="../../static/img/analysis/sortDishesBasedOnNumberOfOrders.png">
+    </div>
+
+    <div class="container" style="padding-top: 5%;text-align: center">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h1 class="section-title ff-secondary text-center text-primary fw-normal mb-5">Customers
+                Based on Number of Orders</h1>
+        </div>
+        <img src="../../static/img/analysis/sortCustomersBasedOnNumberOfOrders.png">
+    </div>
+    <div class="container" style="padding-top: 5%;text-align: center">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h1 class="section-title ff-secondary text-center text-primary fw-normal mb-5">Customers
+                Based on Amount Spent</h1>
+        </div>
+        <img src="../../static/img/analysis/sortCustomersBasedOnAmount.png">
+    </div>
+    <div class="container" style="padding-top: 5%;text-align: center">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h1 class="section-title ff-secondary text-center text-primary fw-normal mb-5">Most
+                Ordered Dishes by Top Customers</h1>
+        </div>
+        <img src="../../static/img/analysis/getMostOrderedDishByCustomers.png">
+    </div>
+</div>
+
+
+{% endblock %}

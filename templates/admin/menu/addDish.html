@@ -1,0 +1,57 @@
+{% extends "layoutNavAdmin.html" %}
+{% block content %}
+
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+    <div class="container text-center my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Add Dish</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center text-uppercase">
+                <li class="breadcrumb-item"><a href="#">Admin Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Add Dish</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+
+
+<form action="" method="post">
+    <div class="row g-3 " style="margin-right: 10%; margin-bottom: 10%; margin-left: 10%">
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" name="dishName" id="dishName"
+                       placeholder="Dish Name" required>
+                <label for="dishName">Dish Name</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" name="price" id="price"
+                       placeholder="Price" required>
+                <label for="price">Price</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <select name="isVegan" id="isVegan" class="form-control" placeholder="Is it Vegan?" required>>
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                </select>
+                <label for="isVegan">Is it Vegan?</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" name="instructions" id="instructions"
+                       placeholder="Instructions" required>
+                <label for="instructions">Instructions</label>
+            </div>
+        </div>
+        <input class="btn btn-primary py-2 px-4" type="submit" value="Submit">
+    </div>
+</form>
+
+
+
+{% endblock %}

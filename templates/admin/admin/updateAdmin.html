@@ -1,0 +1,104 @@
+{% extends "layoutNavAdmin.html" %}
+{% block content %}
+
+
+<div class="container-xxl py-5 bg-dark hero-header mb-5">
+    <div class="container text-center my-5 pt-5 pb-4">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Update Admin Details</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center text-uppercase">
+                <li class="breadcrumb-item"><a href="#">Admin Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Update Admin Details</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+
+
+<form action="" method="post">
+    <div class="row g-3 " style="margin-right: 10%; margin-bottom: 10%; margin-left: 10%">
+        <div class="col-md-6">
+            <div class="form-floating">
+
+                <input type="text" class="form-control" name="firstname" id="firstname"
+                       placeholder="First Name" value={{ adminDetails['firstName'] }} required>
+                <label for="firstname">First Name</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" name="lastname" id="lastname"
+                       placeholder="Last Name" value={{ adminDetails['lastName'] }}  required>
+                <label for="lastname">Last Name</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" name="mobile" id="mobile"
+                       placeholder="Mobile" value={{ adminDetails['mobile'] }}  required>
+                <label for="mobile">Mobile</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" name="email" id="email"
+                       placeholder="E-Mail" value={{ adminDetails['email'] }} required>
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" name="salary" id="salary"
+                       placeholder="Salary" value={{ adminDetails['salary'] }} required>
+                <label for="salary">Salary</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" name="streetAddress" id="streetAddress"
+                       placeholder="streetAddress" value={{ adminDetails['streetAddress'] }} required>
+                <label for="streetAddress">Street Address</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" name="aptNumber" id="aptNumber"
+                       placeholder="Apartment Number" value={{ adminDetails['aptNumber'] }} required>
+                <label for="aptNumber">Apartment Number</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" name="city" id="city"
+                       placeholder="city" value={{ adminDetails['city'] }} required>
+                <label for="city">City</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" name="state" id="state"
+                       placeholder="state" value={{ adminDetails['state'] }} required>
+                <label for="state">State</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <input type="text" class="form-control" name="zipcode" id="zipcode"
+                       placeholder="zipcode" value={{ adminDetails['zipcode'] }} required>
+                <label for="zipcode">Zipcode</label>
+            </div>
+        </div>
+        <input class="btn btn-primary py-2 px-4" type="submit" value="Update">
+    </div>
+</form>
+
+
+
+
+
+
+
+
+{% endblock %}
